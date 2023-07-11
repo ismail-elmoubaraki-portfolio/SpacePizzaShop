@@ -1,0 +1,24 @@
+const generateMemeBtn = document.querySelector(  
+    ".meme-generator .memebtn"
+  );
+  const memeImage = document.querySelector(".meme-generator img");
+  const memeTitle = document.querySelector(".meme-generator .title");
+  
+  
+  const updateDetails = (url, title,) => {
+    memeImage.setAttribute("src", url);
+    memeTitle.innerHTML = title;
+    
+  };
+  
+  const generateMeme = () => {
+    fetch("https://meme-api.com/gimme/wholesomememes")
+      .then((response) => response.json())
+      .then((data) => {
+        updateDetails(data.url, data.title);
+      });
+  };
+  
+  memebtn.addEventListener("click", generateMeme);
+  
+  generateMeme();
